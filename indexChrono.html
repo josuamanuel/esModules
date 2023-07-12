@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World Example</title>
+</head>
+<body>
+  <!-- Import bundle.js as an ES6 module -->
+  <script type="module">
+    import { Chrono, sleepWithFunction } from './js-awe.min.js'
+
+    let chrono = Chrono()
+
+    chrono.time('step1')
+
+    tasks().then(()=>{
+      chrono.timeEnd('step1')
+      let toLog = chrono.timelineLines()
+
+      console.log(toLog)
+
+      document.open()
+      document.write("<table><tr><td><pre>");
+      document.write(toLog)
+      document.write("</pre></td></tr></table>");
+      document.close()
+
+    })
+
+
+    async function tasks()
+    {
+
+      await sleepWithFunction(
+        650,
+        () => {
+          chrono.timeEnd('step1')
+        }
+      )
+
+      await sleepWithFunction(
+        20,
+        () => {
+          chrono.time('step2')
+        }
+      )
+
+      await sleepWithFunction(
+        12,
+        () => {
+          chrono.time('step3')
+        }
+      )
+
+      await sleepWithFunction(
+        500,
+        () => {
+          chrono.timeEnd('step3')
+        }
+      ),
+      await sleepWithFunction(
+        100,
+        () => {
+          chrono.timeEnd('step2')
+        }
+      ),
+      await sleepWithFunction(
+        15,
+        () => {
+          chrono.time('step1')
+        }
+      )
+    }
+  </script>
+</body>
+</html>

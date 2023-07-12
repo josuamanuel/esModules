@@ -1,0 +1,24 @@
+{
+  "name": "es-module",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.2",
+    "@rollup/plugin-node-resolve": "^15.1.0",
+    "@rollup/plugin-typescript": "^11.1.2",
+    "rollup": "^3.26.2"
+  },
+  "dependencies": {
+    "js-awe": "^1.0.40"
+  },
+  "main": "js-awe.min.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

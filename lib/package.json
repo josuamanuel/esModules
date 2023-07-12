@@ -1,0 +1,19 @@
+{
+  "name": "es-module",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/mjs/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json && ./fixup",
+    "buildWeb": "rollup src/index.js --file dist/bundle.js --format esm",
+    "npmInstall": "mkdir ../node_modules; mkdir ../node_modules/es-module; cp package.json ../node_modules/es-module && cp -r dist ../node_modules/es-module"
+  },
+  "dependencies": {
+    "typescript": "^5.1.6"
+  }
+}
